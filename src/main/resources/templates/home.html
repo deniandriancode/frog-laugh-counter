@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Frog Laugh Meme Counter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+
+      <p>Frog Laugh Count: <span th:text="${count}" id="count"></span></p>
+      <button id="laugh">Laugh</button>
+
+
+      <script>
+          let laugh = document.querySelector("#laugh");
+          let count = document.querySelector("#count");
+          laugh.addEventListener("click", () => {
+              let num = parseInt(count.textContent);
+              count.textContent = ++num;
+              fetch("http://localhost:8080/laugh");
+          });
+      </script>
+  </body>
+
+</html>
